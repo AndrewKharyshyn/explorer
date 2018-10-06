@@ -1,0 +1,4 @@
+{ Hash: 'C', Origin: 'Explorer', Destination: 'Infinity', Timestamp: Infinity, Key: Infinity, Value: Infinity },
+{ Hash: 'A', Origin: Infinity, Destination: Infinity, Timestamp: Infinity, Key: Infinity, Value: Infinity },
+{ Hash: 'B', Origin: Infinity, Destination: 'GNU', Timestamp: Infinity, Key: Infinity, Value: Infinity },
+{ Hash: 'D', Origin: 'Explorer', Destination: Infinity, Timestamp: Infinity, Key: Infinity, Value: Infinity }
