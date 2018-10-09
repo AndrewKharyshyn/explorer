@@ -1,5 +1,5 @@
 <!doctype html>
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:v-bind="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -9,58 +9,38 @@
 
     <!-- Bootstrap + jQuery -->
     <link rel="stylesheet" href="/css/bootstrap.min.css">
-    <!--<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">-->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-            integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-            crossorigin="anonymous"></script>
+    <link type="text/css" rel="stylesheet" href="//unpkg.com/bootstrap-vue@latest/dist/bootstrap-vue.css"/>
+    <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
             integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
             crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
             integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
             crossorigin="anonymous"></script>
-    <!-- include Vue.js -->
-    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
+
+    <!-- Vue.js -->
+    <!--<script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>-->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.min.js"></script>
-    <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+    <script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
+
+    <!-- Bootstrap/Vue -->
+    <script src="//unpkg.com/babel-polyfill@latest/dist/polyfill.min.js"></script>
+    <script src="//unpkg.com/bootstrap-vue@latest/dist/bootstrap-vue.js"></script>
+
+    <script src="../static/js/main.js"></script>
 </head>
 
 <body>
-<!-- Navigation -->
-<div class="container-fluid">
-    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-        <a class="navbar-brand" href="#">BLOQLY</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01"
-                aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-
-        <div class="collapse navbar-collapse" id="navbarColor01">
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item active">
-                    <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Transactions</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Blocks</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Statistics</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Settings</a>
-                </li>
-            </ul>
-            <form class="form-inline my-2 my-lg-0">
-                <input class="form-control mr-sm-2" type="text" placeholder="Search">
-                <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
-            </form>
-        </div>
-    </nav>
-    <!-- Navigation -->
+<div id="app">
+    <app></app>
 </div>
+
+<!--<script>-->
+    <!--var app = new Vue({-->
+        <!--el: '#app'-->
+    <!--})-->
+<!--</script>-->
 
 <!-- Jumbotron Section -->
 <!--<div class="container-fluid">-->
@@ -81,122 +61,5 @@
 <!--<link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css">-->
 <!-- jQuery DataTables -->
 
-<!-- component template -->
-<script type="text/x-template" id="table-template">
-    <table class="table table-hover table-sm">
-        <thead class="thead-dark">
-        <tr>
-            <th v-for="key in columns"
-                @click="sortBy(key)"
-                :class="{ active: sortKey == key }">
-                {{ key | capitalize }}
-                <span class="arrow" :class="sortOrders[key] > 0 ? 'asc' : 'dsc'">
-          </span>
-            </th>
-        </tr>
-        </thead>
-        <tbody class="table-striped">
-        <tr v-for="entry in filteredData" class="table-light">
-            <td v-for="key in columns">
-                {{entry[key]}}
-            </td>
-        </tr>
-        </tbody>
-    </table>
-</script>
-
-<div class="container-fluid">
-    <div id="latesttransactions">
-        <div class="form-group">
-            <label class="col-form-label" for="searchField">SEARCH</label>
-            <input name="query" v-model="searchQuery" type="text" class="form-control"
-                   placeholder="Please, enter your request..." id="searchField">
-        </div>
-
-        <!--<form id="search">-->
-        <!--Search <input name="query" v-model="searchQuery">-->
-        <!--</form>-->
-        <demo-grid
-                :data="gridData"
-                :columns="gridColumns"
-                :filter-key="searchQuery">
-        </demo-grid>
-    </div>
-</div>
-
-<script>
-    Vue.component('demo-grid', {
-        template: '#table-template',
-        props: {
-            data: Array,
-            columns: Array,
-            filterKey: String
-        },
-        data: function () {
-            var sortOrders = {}
-            this.columns.forEach(function (key) {
-                sortOrders[key] = 1
-            })
-            return {
-                sortKey: '',
-                sortOrders: sortOrders
-            }
-        },
-        computed: {
-            filteredData: function () {
-                var sortKey = this.sortKey
-                var filterKey = this.filterKey && this.filterKey.toLowerCase()
-                var order = this.sortOrders[sortKey] || 1
-                var data = this.data
-                if (filterKey) {
-                    data = data.filter(function (row) {
-                        return Object.keys(row).some(function (key) {
-                            return String(row[key]).toLowerCase().indexOf(filterKey) > -1
-                        })
-                    })
-                }
-                if (sortKey) {
-                    data = data.slice().sort(function (a, b) {
-                        a = a[sortKey]
-                        b = b[sortKey]
-                        return (a === b ? 0 : a > b ? 1 : -1) * order
-                    })
-                }
-                return data
-            }
-        },
-        filters: {
-            capitalize: function (str) {
-                return str.charAt(0).toUpperCase() + str.slice(1)
-            }
-        },
-        methods: {
-            sortBy: function (key) {
-                this.sortKey = key
-                this.sortOrders[key] = this.sortOrders[key] * -1
-            }
-        }
-    })
-    var dataURL = 'https://my-json-server.typicode.com/andrewkharyshyn/explorer/serverResponse';
-    var latest = new Vue({
-        el: '#latesttransactions',
-        data: {
-            searchQuery: '',
-            gridColumns: ['Hash', 'Origin', 'Destination', 'Timestamp', 'Key', 'Value'],
-            gridData: []
-        },
-        mounted() {
-            var self = this
-            $.getJSON(dataURL, function (data) {
-                self.gridData = data;
-            });
-        }
-    })
-</script>
-<div>
-    <div>
-        <p style="text-align: center">Copyright ⓒ 2018 Bloqly. <span>All rights reserved.</span></p>
-    </div>
-</div>
 </body>
 </html>
