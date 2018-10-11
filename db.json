@@ -1,38 +1,4 @@
 {
-	"serverResponse": [{
-			"Hash": "D6A9105E6185DDE1F56BA42C5C038",
-			"Origin": "D6A9105E6185DDE1F56BA",
-			"Destination": "5CA1EEF9AA50625F3B7AC63",
-			"Timestamp": "1538644692523",
-			"Key": "balance",
-			"Value": "54"
-		}, {
-			"Hash": "27D398C1F05C01D15DCA762C336",
-			"Origin": "A2C4FAB559B294D6E7C92",
-			"Destination": "5CA1EEF9AA50625F3B7AC637D",
-			"Timestamp": "1538644691068",
-			"Key": "main",
-			"Value": "85"
-		},
-		{
-			"Hash": "A26D53C79354CA4B71ADFED69",
-			"Origin": "1EB10EEA455905D4B50C2AC65",
-			"Destination": "5CA1EEF9AA50625F3B",
-			"Timestamp": "1538644691313",
-			"Key": "main",
-			"Value": "33"
-		},
-		{
-			"Hash": "075ECBE2C6A6E92CE624EF",
-			"Origin": "595BB4A80CEC4FF0A47A4A934F9EFC9",
-			"Destination": "5CA1EEF9AA50625F3B7AC637",
-			"Timestamp": "1538644691191",
-			"Key": "balance",
-			"Value": "1125"
-		}
-	]
-}
-{
 	"transactions": [{
 			"transaction": {
 				"space": "main",
